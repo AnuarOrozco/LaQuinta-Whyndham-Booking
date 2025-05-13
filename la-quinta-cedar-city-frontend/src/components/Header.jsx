@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { PhoneIcon } from '@heroicons/react/24/solid';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const navItems = [
@@ -18,23 +19,23 @@ export default function Header() {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center">
+          {/* Logo - Ahora usa Link */}
+          <Link to="/" className="flex items-center">
             <h1 className="text-2xl font-bold text-quinta-blue">
               La Quinta <span className="text-quinta-gold">Cedar City</span>
             </h1>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.name}
-                href={item.path}
+                to={item.path}
                 className="text-gray-700 hover:text-quinta-blue transition-colors font-medium"
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
             
             <div className="flex items-center space-x-4">
@@ -46,13 +47,15 @@ export default function Header() {
                 (435) 586-7777
               </a>
               
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-quinta-blue text-white px-6 py-2 rounded-full font-medium shadow-md hover:bg-blue-900 transition-colors"
-              >
-                Book Now
-              </motion.button>
+              <Link to="/book-now">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-quinta-blue text-white px-6 py-2 rounded-full font-medium shadow-md hover:bg-blue-900 transition-colors"
+                >
+                  Book Now
+                </motion.button>
+              </Link>
             </div>
           </nav>
 
